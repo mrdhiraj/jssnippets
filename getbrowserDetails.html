@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+
+</head>
+<body>
+
+<h2>The Navigator Object</h2>
+
+<p>The appName property returns the application name of the browser:</p>
+
+<p id="myList"></p>
+
+<br>
+<div id="example-table"></div>
+
+<script>
+tabledata=[]
+$.getJSON('http://ip-api.com/json?callback=?', function(data) {
+  addtoList("myList",JSON.stringify(data, null, 2));
+  tabledata=data;
+}); 
+                
+ 
+addtoList("myList",navigator.appName);
+addtoList("myList",navigator.userAgent);
+addtoList("myList",navigator.platform);
+addtoList("myList",navigator.language);
+addtoList("myList",navigator.appVersion);
+addtoList("myList",navigator.product);
+addtoList("myList",navigator.appCodeName);
+
+ function addtoList(myList, firstname) {
+    var entry = document.createElement('li');
+    entry.appendChild(document.createTextNode(firstname));
+ 
+    var list = document.getElementById(myList);
+    list.appendChild(entry);
+    
+}
+
+
+</script>
+
+</body>
+</html>

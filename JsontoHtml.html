@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+tr:hover {background-color:#a5a0f5;}
+
+</style>
+
+
+</head>
+<body>
+<script>
+//http://ip-api.com/json
+urltouse ='https://ipinfo.io/json'
+$.getJSON(urltouse+'?callback=?', function(data) 
+  {
+      
+     var list = getList(data);
+      $('body').append(list);
+      
+
+       var table = getTable(data);
+      $('body').append(table);
+
+
+   }); 
+
+   function getList(data)
+   {
+      var list = $('<ul></ul>');
+      $.each(data, function (key, value) 
+        {
+            list.append('<li><B>' + key +'</B>' + value +'</li> ');
+        });
+        return list;
+   }
+
+
+ function getTable(data)
+   {
+      var table = $('<table style="width:25%"></table>');
+    
+      $.each(data, function (key, value) 
+        {
+            table.append('<tr><td>' + key +'</td><td>' + value +'</td></tr> ');
+        });
+        return table;
+   }
+
+</script>
+
+</body>
+</html>
+ 
+ 
+   
